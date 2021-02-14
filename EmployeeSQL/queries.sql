@@ -27,7 +27,8 @@ CREATE VIEW Q1 AS --Saved as a view 'Q2' in Database
 -- List the manager of each department with the following information: 
 -- department number, department name, the manager's employee number, last name, first name.
 
-SELECT dm.emp_no, dep.dept_no, dep.dept_name, emp.emp_no, emp.last_name, emp.first_name
+CREATE VIEW manager_details AS
+SELECT dep.dept_no, dep.dept_name, emp.emp_no, emp.last_name, emp.first_name
 FROM Department_Managers AS dm 
 	JOIN Departments AS dep
 	ON (dm.dept_no=dep.dept_no)
@@ -38,7 +39,10 @@ FROM Department_Managers AS dm
 				JOIN Department_Managers 
 				ON emp.emp_no=dm.emp_no
 	ORDER BY dm.emp_no ASC;
----------------------------
+
+SELECT DISTINCT emp_no, dept_no, dept_name, last_name, first_name
+FROM manager_details;
+
 
 --QUESTION 4--
 -- List the department of each employee with the following information: 
