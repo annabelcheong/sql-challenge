@@ -2,6 +2,7 @@
 -- Link to schema: https://app.quickdatabasediagrams.com/#/d/WQHjF9
 -- NOTE! If you have used non-SQL datatypes in your design, you will have to change these here.
 
+
 CREATE TABLE Departments (
     dept_no varchar   NOT NULL,
     dept_name varchar   NOT NULL,
@@ -17,10 +18,7 @@ CREATE TABLE Emps_by_Dept (
 
 CREATE TABLE Department_Managers (
     dept_no varchar   NOT NULL,
-    emp_no int   NOT NULL,
-    CONSTRAINT pk_Department_Managers PRIMARY KEY (
-        emp_no
-     )
+    emp_no int   NOT NULL
 );
 
 CREATE TABLE Employees (
@@ -58,11 +56,21 @@ REFERENCES Departments (dept_no);
 ALTER TABLE Department_Managers ADD CONSTRAINT fk_Department_Managers_dept_no FOREIGN KEY(dept_no)
 REFERENCES Departments (dept_no);
 
+ALTER TABLE Department_Managers ADD CONSTRAINT fk_Department_Managers_emp_no FOREIGN KEY(emp_no)
+REFERENCES Employees (emp_no);
+
 ALTER TABLE Employees ADD CONSTRAINT fk_Employees_title_id FOREIGN KEY(title_id)
 REFERENCES Titles (title_id);
 
 ALTER TABLE Salaries ADD CONSTRAINT fk_Salaries_emp_no FOREIGN KEY(emp_no)
 REFERENCES Employees (emp_no);
 
--- Import all csv files. 
---Start from importing csv file with PK and no FK link constraint to another table that has not been loaded yet.
+-- Import all csv files. *Start from importing csv file (tables) with PK and no FK link constraint to another table that has not been loaded yet.
+
+-- Import csv files in following order
+--1. titles.csv 
+--2. departments.csv
+--3. employees.csv
+--4. salaries.csv
+--5. emps_by_dept.csv
+--6. dept_manager.csv
