@@ -9,7 +9,8 @@ EmployeeSQL Folder
 - schemata.sql (Queries to create the tables and relationship are all in here.)
 - queries.sql (All of the 8 questions are answered by queries in this file.)
 - bonus.ipynb (Bonus exercise to import the SQL database into Pandas is in this file.)
-
+- Company Overview of Salaries.png (Histogram created from bonus.ipynb)
+- Median Salaries by Title.png (Bar Chart created from bonus.ipynb)
 
 Resources Folder
 - departments.csv
